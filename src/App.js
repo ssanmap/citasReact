@@ -1,7 +1,16 @@
-import React, { Component} from 'react';
+import React, { Component, useState} from 'react';
 import {Formulario } from './Components/Formulario';
 
 function App() {
+  const [citas, setcitas] = useState([])
+  // fx que toma las citas y agregue la nueva
+  const crearCita = cita => {
+    setcitas([
+      ...citas,
+      cita
+    ]);
+  }
+  
   return (
     <div className="App">
       
@@ -9,7 +18,9 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="one-half column">
-           <Formulario></Formulario>
+           <Formulario
+           crearCita={crearCita}
+           ></Formulario>
           </div>
           <div className="one-half column">
             2
