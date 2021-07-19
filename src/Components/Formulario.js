@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import uuid from 'uuid/v4';
+import PropTypes from 'prop-types';
+const { v4: uuidv4 } = require('uuid');
+
 export const Formulario = ({crearCita}) => {
   // crear el state de citas
   const [cita, setCita] = useState({
@@ -36,7 +38,7 @@ export const Formulario = ({crearCita}) => {
     }
     seterror(false);
     // asignar un id
-    cita.id = uuid();
+    cita.id = uuidv4();
     // crear cita
     crearCita(cita);
     // actualizar cita
@@ -112,3 +114,8 @@ export const Formulario = ({crearCita}) => {
     </div>
   );
 };
+
+Formulario.propTypes = {
+   crearCita: PropTypes.func.isRequired
+   
+}
